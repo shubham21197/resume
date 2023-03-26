@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ScrollerComponent } from '../scroller/scroller.component';
 
 @Component({
@@ -29,6 +29,16 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       this.toggleMode();
+    }
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    if (window.innerWidth < 768) {
+      if (this.isExpanded) {
+        this.toggle();
+      }
+      this.mobile = true;
     }
   }
 

@@ -1,4 +1,4 @@
-<mat-sidenav-container autosize>
+<mat-sidenav-container [autosize]="!mobile">
     <mat-sidenav #sidenav [fixedInViewport]="true" mode="side" opened [class.mat-drawer-dark]="!lightMode">
         <section [class.sidenav]="isExpanded" class="h-100 d-flex flex-column">
             <div class="toggle">
