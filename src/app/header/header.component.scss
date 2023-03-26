@@ -1,0 +1,68 @@
+@import "@angular/material/theming";
+@import '../../scss/variables';
+
+$selected-nav: rgba(100, 100, 100, 0.2);
+
+.sidenav {
+    width: 250px;
+
+    .toggle {
+        justify-content: start;
+    }
+}
+
+.toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 16px;
+    flex: 0 1 auto;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.nav {
+
+    flex: 1 1 auto;
+    &:last-child {
+        float: bottom;
+    }
+    .active-link {
+        background-color: $selected-nav;
+        border-left: solid 3px mat-color($angular-primary);
+    }
+
+    .hover {
+        transition-duration: 400ms;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-property: transform, border, background-color;
+    }
+
+    mat-list-item,
+    a {
+        border: none;
+        box-sizing: border-box;
+        text-decoration: none;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $selected-nav;
+            border-left: solid 3px mat-color($angular-primary);
+        }
+
+        .nav-icon-holder p {
+            margin: 0;
+        }
+    }
+}
+
+.mat-drawer {
+    background-image: url('/assets/images/bg-nav-light.png');
+}
+
+
+.mat-drawer-dark {
+    background-image: url('/assets/images/bg-nav.png') !important;
+}

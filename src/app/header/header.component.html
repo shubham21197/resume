@@ -1,0 +1,34 @@
+<mat-sidenav-container autosize>
+    <mat-sidenav #sidenav [fixedInViewport]="true" mode="side" opened [class.mat-drawer-dark]="!lightMode">
+        <section [class.sidenav]="isExpanded" class="h-100 d-flex flex-column">
+            <div class="toggle">
+                <mat-icon color="primary" (click)="toggle()">
+                    dehaze
+                </mat-icon>
+            </div>
+            <mat-nav-list class="nav d-flex flex-column justify-content-between">
+                <div class="">
+                    <a mat-list-item *ngFor="let route of routes; let i = index" [class.active-link]="scrollPosition === i" class="hover" (click)="scrollTo(route.path)">
+                        <div class="d-flex flex-row gap-2 nav-icon-holder">
+                            <mat-icon color="primary" mat-list-icon [matTooltip]="!isExpanded ? route.title : ' '" matTooltipPosition="right">
+                                {{ route.icon }}</mat-icon>
+                            <p matLine *ngIf="isExpanded">{{ route.title }}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="">
+                    <a mat-list-item (click)="toggleMode()" class="hover">
+                        <div class="d-flex flex-row gap-2 nav-icon-holder">
+                            <mat-icon color="primary" *ngIf="lightMode">brightness_5</mat-icon>
+                            <mat-icon color="primary" *ngIf="!lightMode">bedtime</mat-icon>
+                            <p matLine *ngIf="isExpanded">{{lightMode ? 'Light' : 'Dark'}} Mode</p>
+                        </div>
+                    </a>
+                </div>
+            </mat-nav-list>
+        </section>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-scroller (setPage)="setScrollPosition($event)" [currentPage]="scrollPosition" #scroller></app-scroller>
+    </mat-sidenav-content>
+</mat-sidenav-container>

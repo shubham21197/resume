@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import "scss/variables";
+@import "@angular/material/theming";
+@include mat.core();
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-sidenav[style] {
+  visibility: visible !important;
+}
+
+.mat-drawer {
+  transform: none !important;
+}
+
+$angular-default-theme: mat.define-light-theme((color: (primary: $angular-primary-light,
+        accent: $angular-accent,
+        warn: $angular-warn,
+      ),
+    ));
+
+@include mat.all-component-themes($angular-default-theme);
+
+$angular-dark-theme: mat.define-dark-theme((color: (primary: $angular-primary,
+        accent: $angular-accent,
+        warn: $angular-warn,
+      )));
+
+$background-color: #000;
+
+.darkMode {
+  @include mat.all-component-colors($angular-dark-theme);
+
+  .mat-drawer {
+    background-color: lighten($background-color, 10);
+  }
+
+  .mat-drawer-container {
+    background-color: $background-color;
+  }
+}
