@@ -1,15 +1,19 @@
 .home-container {
     min-height: 100vh;
-    height: 100vh;
+    // height: 100vh;
 
     .home-header {
         width: 100%;
-        background-image: url('/assets/images/bg-nav-light.png');
+        background-image: url('/assets/images/header-bg.png');
+        background-size: cover;
         display: flex;
         justify-content: space-between;
-        padding: 92px 64px;
+        padding: 92px 64px 48px;
+        border-width: 0 0 4px;
+        border-style: solid;
+        border-image: linear-gradient(to right, rgb(46, 183, 229), rgb(7, 110, 220)) 1;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 796px) {
             flex-direction: column;
             padding: 16px 0 0;
         }
@@ -18,7 +22,7 @@
             width: 200px;
             height: 200px;
 
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 796px) {
                 order: 1;
                 margin: 0 auto;
             }
@@ -29,7 +33,7 @@
             padding: 32px 64px 0;
 
             .title {
-                font-size: 4rem;
+                font-size: 36pt;
                 font-weight: 700;
             }
 
@@ -39,16 +43,10 @@
 
             .contacts {
                 display: flex;
-                justify-content: start;
+                justify-content: flex-start;
                 font-size: 10pt;
-                margin-left: 12px;
+                margin: 4px 12px;
                 width: 100%;
-
-                &.large {
-                    mat-icon {
-                        font-size: 8px;
-                    }
-                }
 
                 &.green {
                     mat-icon {
@@ -56,9 +54,9 @@
                     }
                 }
 
-                &.black {
+                &.blue {
                     mat-icon {
-                        color: #000;
+                        color: #2196f3;
                     }
                 }
 
@@ -68,15 +66,30 @@
                 }
 
                 a {
-                    color: #36a3e1;
+                    color: #1894db;
+                    text-decoration: none;
 
                     &:hover {
-                        color: #2765ad;
+                        color: #0e529e;
                     }
                 }
             }
 
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 1100px) {
+                .title {
+                    font-size: 32pt;
+                    font-weight: 600;
+                }
+            }
+
+            @media screen and (max-width: 1020px) {
+                .title {
+                    font-size: 26pt;
+                    font-weight: 600;
+                }
+            }
+
+            @media screen and (max-width: 796px) {
                 padding: 16px;
                 order: 2;
 
@@ -103,8 +116,40 @@
                     margin-top: 8px;
                 }
             }
+
+            // Support Galaxy fold :'(
+            @media screen and (max-width: 360px) {
+                .contacts {
+                    padding: 0;
+                    flex-direction: column;
+                    text-align: center;
+
+                    mat-icon {
+                        text-align: center;
+                        width: 100%;
+                        margin: 0 auto;
+                    }
+                }
+                
+            }
         }
 
 
     }
 }
+
+blockquote {
+    background: #f9f9f922;
+    border-left: 10px solid #cccccc66;
+    margin: 1.5em 10px;
+    padding: 1.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+
+blockquote:before {
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }

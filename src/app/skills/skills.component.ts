@@ -7,4 +7,33 @@ import { Component } from '@angular/core';
 })
 export class SkillsComponent {
 
+  currentNav = 'ai';
+  tabs = [
+    {
+      name: 'AI',
+      nav: 'ai'
+    },
+    {
+      name: 'Frontend',
+      nav: 'frontend'
+    },
+    {
+      name: 'Backend',
+      nav: 'backend'
+    },
+    {
+      name: 'DevOps',
+      nav: 'devops'
+    },
+    {
+      name: 'Frameworks',
+      nav: 'frameworks'
+    }
+
+  ]
+
+  navTo = (nav: string) => {
+    this.currentNav = nav;
+  }
+
 }

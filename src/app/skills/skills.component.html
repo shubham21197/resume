@@ -1,30 +1,50 @@
-<p>skills works!</p>
+<div class="skills-container">
+    <div class="skills-head">
+        <mat-icon aria-label="skills" svgIcon="pen-tool"></mat-icon>
+        Skills
+    </div>
+    <nav class="nav">
+        <a class="nav-link" 
+           *ngFor="let tab of tabs"
+           (click)="navTo(tab.nav)"
+           [class.active]="currentNav === tab.nav">
+           {{tab.name}}
+        </a>
+    </nav>
 
-<p>skills works!</p>
+    <ng-container *ngIf="currentNav === 'ai'">
+        <div class="skill-container">
+            AI Works
+        </div>
+    </ng-container>
 
-<p>skills works!</p>
+    <ng-container *ngIf="currentNav === 'frontend'">
+        <div class="skill-container">
+            FE Works
+        </div>
+    </ng-container>
 
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
-<p>skills works!</p>
+    <ng-container *ngIf="currentNav === 'backend'">
+        <div class="skill-container">
+            BE Works
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentNav === 'database'">
+        <div class="skill-container">
+            DB Works
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentNav === 'devops'">
+        <div class="skill-container">
+            DevOps Works
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentNav === 'frameworks'">
+        <div class="skill-container">
+            Frameworks Works
+        </div>
+    </ng-container>
+</div>

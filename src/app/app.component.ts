@@ -20,5 +20,9 @@ export class AppComponent {
       'linkedin',
       this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/svg/linkedin.svg`)
     );
+    this.matIconRegistry.addSvgIcon(
+      'pen-tool',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/svg/pen-tool.svg`)
+    );
   }
 }
