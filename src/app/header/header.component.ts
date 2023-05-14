@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ScrollerComponent } from '../scroller/scroller.component';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -14,22 +15,23 @@ export class HeaderComponent implements OnInit {
   mobile = false;
   isExpanded = true;
   scrollPosition = 0;
-  lightMode = true;
+
+  get lightMode() {
+    return this.themeService.lightMode;
+  }
 
   routes = [
     { path: 'home', icon: 'home', title: 'Home' },
     { path: 'skills', icon: 'info', title: 'Skills' },
   ]
 
-  constructor() {
+  constructor(private themeService: ThemeService) {
     this.mobile = window.innerWidth < 768;
     this.isExpanded = !this.mobile;
   }
 
   ngOnInit(): void {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      this.toggleMode();
-    }
+    this.className = this.themeService.lightMode ? '' : 'darkMode';
   }
 
   @HostListener('window:resize')
@@ -55,8 +57,8 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMode() {
-    this.lightMode = !this.lightMode;
-    this.className = this.lightMode ? '' : 'darkMode';
+    this.themeService.lightMode = !this.themeService.lightMode;
+    this.className = this.themeService.lightMode ? '' : 'darkMode';
   }
 
 

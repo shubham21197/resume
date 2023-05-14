@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { debounceTime, distinctUntilChanged, fromEvent, Subject, takeUntil } from 'rxjs';
+import { ScrollService } from '../services/scroll.service';
 
 @Component({
   selector: 'app-scroller',
@@ -17,7 +18,7 @@ export class ScrollerComponent implements AfterViewInit, OnDestroy {
 
   private readonly destroy$ = new Subject<boolean>();
 
-  constructor() {
+  constructor(private scrollService: ScrollService) {
     fromEvent(window, 'scroll')
       .pipe(
         takeUntil(this.destroy$),
@@ -26,6 +27,10 @@ export class ScrollerComponent implements AfterViewInit, OnDestroy {
       )
       .subscribe(() => {
         this.onScroll();
+      });
+
+      this.scrollService.scrollToPage.subscribe((page: string) => {
+        this.scrollToPage(page);
       });
   }
 
